@@ -10,24 +10,33 @@
 #include "parse_factory.cpp"
 using namespace std;
 
-void process_file(const string& file, parse_factory& parsers, mutex& stdout_writing) {
+int process_file(const string& file, parse_factory& parsers, mutex& stdout_writing) {
+    /*
+    * This function is used to process the file based on the file extension
+    */
     string file_extension = file.substr(file.find_last_of(".") + 1);
     auto parser = parsers.get_parser(file_extension); // get the correct parser based on extension
 
     if (parser) {
-        parser->parse(file, stdout_writing);
+        int parsing_result = parser->parse(file, stdout_writing);
+        if (parsing_result != 0) {
+            lock_guard<mutex> lock(stdout_writing);
+            //cout << "Error occured while parsing file: " << file << endl;
+            return parsing_result;
+        }
     } else {
         lock_guard<mutex> lock(stdout_writing); // lock the stdout_writing mutex
-        cout << "File extension is not supported: " << file_extension << endl;
-        return;
+        //cout << "File extension is not supported: " << file_extension << endl;
+        return 1;
     }
+    return 0;
 }
 
 int main(int argc, char const *argv[])
 {
     vector <string> files(argv + 1, argv + argc); // vector of the cmd. line arguments
     mutex stdout_writing; // mutex to prevent concurrent writing to stdout
-    vector<future<void>> futures; // vector of the futures for the threads
+    vector<future<int>> futures; // vector of the futures for the threads
 
     parse_factory parsers;
 
@@ -36,7 +45,11 @@ int main(int argc, char const *argv[])
     }
 
     for(auto& future : futures) {
-        future.get(); // wait for all the threads to finish
+        int final_result = future.get(); // wait for all the threads to finish
+        if(final_result != 0) {
+            cout << "Some files were not processed successfully" << endl;
+            return 2;
+        }
     }
 
     return 0;

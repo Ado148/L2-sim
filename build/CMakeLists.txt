@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -pedantic")
 
+file(GLOB HEADERS "../src/*.hpp")
 
 file(GLOB SOURCES "../src/*.cpp")
 
