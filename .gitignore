@@ -13,6 +13,7 @@ CMakeUserPresets.json
 *.pdf
 *.bin
 *.txt
+*.json
 bin_gen.py
 
 # Ignore the .vscode folder

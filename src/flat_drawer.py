@@ -13,5 +13,5 @@ if __name__ == '__main__':
     print('Input data:')
     exit_code = input_data()
     print('')
-    sys.exit(1)
+    sys.exit(exit_code)
     

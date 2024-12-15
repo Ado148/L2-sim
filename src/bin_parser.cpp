@@ -10,7 +10,6 @@ class bin_parser : public file_parser {
         int parse(const string& file_path, mutex& stdout_writing) override {   
             ifstream f(file_path, ios::binary);
             if (!f.is_open()) {
-                //cout << "File not found: " << file_path << endl;
                 return 1;
             } 
 
@@ -20,7 +19,7 @@ class bin_parser : public file_parser {
                 uint16_t x = (plane_point >> 12) & 0xFFF ; // we need to mask it by 0xFFF because of the 12 bits
                 uint16_t y = plane_point & 0xFFF;
 
-                { //lock the scope for the stdout - critical section
+                {
                     lock_guard<mutex> lock(stdout_writing);
                     cout << file_path << " " << static_cast<int>(group) << ":" << x << "," << y << endl; // data for the python
                 }

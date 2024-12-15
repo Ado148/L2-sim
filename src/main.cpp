@@ -12,21 +12,20 @@ using namespace std;
 
 int process_file(const string& file, parse_factory& parsers, mutex& stdout_writing) {
     /*
-    * This function is used to process the file based on the file extension
+    * This function is used to choose the correct parser based on the file extension
     */
+
     string file_extension = file.substr(file.find_last_of(".") + 1);
     auto parser = parsers.get_parser(file_extension); // get the correct parser based on extension
-
+    
     if (parser) {
         int parsing_result = parser->parse(file, stdout_writing);
-        if (parsing_result != 0) {
+        if (parsing_result != 0) { // if the parsing was not successful
             lock_guard<mutex> lock(stdout_writing);
-            //cout << "Error occured while parsing file: " << file << endl;
+            cout << "Error occured while parsing file: " << file << endl;
             return parsing_result;
         }
-    } else {
-        lock_guard<mutex> lock(stdout_writing); // lock the stdout_writing mutex
-        //cout << "File extension is not supported: " << file_extension << endl;
+    } else { // if the file extension is not supported
         return 1;
     }
     return 0;
