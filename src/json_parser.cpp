@@ -1,3 +1,6 @@
+// Author: Bc.  Adam Pap
+// Description: This class is used to parse the json (.json) files 
+
 #include <iostream>
 #include <fstream>
 #include <mutex>
@@ -24,6 +27,7 @@ class json_parser : public file_parser {
                         string group = point["group"];
                         int x = point["x"];
                         int y = point["y"];
+
                     {
                         lock_guard<mutex> lock(stdout_writing);
                         cout << file_path << " " << group << ":" << x << "," << y << endl;

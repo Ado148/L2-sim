@@ -1,3 +1,6 @@
+// Author: Bc.  Adam Pap
+// Description: This class is used to create the correct parser based on the file extension 
+
 #include <memory>
 #include "txt_parser.cpp"
 #include "bin_parser.cpp"

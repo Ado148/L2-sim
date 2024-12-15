@@ -1,3 +1,6 @@
+// Author: Bc.  Adam Pap
+// Description: This class is used to parse the binary (.bin) files
+
 #include <iostream>
 #include <fstream>
 #include <mutex>
