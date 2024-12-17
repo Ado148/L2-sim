@@ -4,11 +4,11 @@
 #include <iostream>
 #include <fstream>
 #include <mutex>
-#include "file_parser.hpp"
+#include "../includes/file_parser.hpp"
 
 // Using the nlohmann::json library, which is licensed under the MIT License.
 // See the LICENSE file in the project root for more information.
-#include "third_party_libs/json.hpp"
+#include "../third_party_libs/json.hpp"
 using json = nlohmann::json;
 
 class json_parser : public file_parser { 

@@ -4,9 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <mutex>
-#include "file_parser.hpp"
-
-using namespace std;
+#include "../includes/file_parser.hpp"
 
 class bin_parser : public file_parser {
     public: 

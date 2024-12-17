@@ -15,6 +15,9 @@ def input_data(data):
         return 1
     
 def input_data_processing(data): 
+    # This function processes the input data and returns an array of tuples 
+    # e.g. [('filename', 'group', x, y), ...]
+    
     plane_points = []
     
     for line in data:
@@ -29,6 +32,8 @@ def input_data_processing(data):
     return plane_points
         
 def plot_plane_points(plane_points):
+    # This function plots the plane points and saves the plot as plane_points.png
+    
     file_groups = {}
     
     fig, ax = plt.subplots()
@@ -52,6 +57,7 @@ def plot_plane_points(plane_points):
     
     plt.savefig('plane_points.png')
 
+
     
 if __name__ == '__main__':
     data = sys.stdin.readlines()
@@ -61,6 +67,7 @@ if __name__ == '__main__':
     #print('End of input data\n') # debug
 
     plane_points = input_data_processing(data)
+    print(plane_points)
     
     plot_plane_points(plane_points)
     print('Plot saved as plane_points.png in the root of the project.')

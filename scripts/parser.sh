@@ -17,7 +17,7 @@ for file in "$@"; do
     files_arr+=("$file")
 done 
 
-# run the c++ program
+# run the c++ and python program
 ./build/main "${files_arr[@]}" | python3.10 ./src/flat_drawer.py
 
 # Check if the pipeline failed
