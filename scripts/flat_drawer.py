@@ -48,8 +48,8 @@ def plot_plane_points(plane_points):
     ax.set_ylabel('Y')
     ax.set_title('Scatter Plot of the Plane')
     ax.legend()
-    
-    plt.savefig('plane_points.png')
+
+    plt.savefig('plane_points.png', bbox_inches='tight')
 
 
     
