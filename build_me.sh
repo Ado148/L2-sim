@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Author:       Bc. Adam Pap
+# Author:       Adam Pap
 # Description:  This script will build and compile the project
 
 # Check if the build directory exist
@@ -12,4 +12,4 @@ cd build
 
 cmake ..
 
-make 
+make install

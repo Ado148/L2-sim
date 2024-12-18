@@ -1,4 +1,4 @@
-// Author: Bc.  Adam Pap
+// Author:      Adam Pap
 // Description: This program is used to process the input files data and then 
 //              give them to the python script
 

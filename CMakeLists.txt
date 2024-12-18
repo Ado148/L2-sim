@@ -21,14 +21,9 @@ set(CMAKE_INSTALL_PREFIX "$ENV{HOME}/L2_sim")
 install(TARGETS ${EXEC} RUNTIME DESTINATION bin)
 
 # install the headers to /L2_sim/include
-install(FILES ${HEADERS} DESTINATION include)
+install(FILES ${HEADERS} DESTINATION includes)
 
-install(FILES "${CMAKE_SOURCE_DIR}/scripts/parse.sh"  
+install(FILES "${CMAKE_SOURCE_DIR}/scripts/parser.sh"  
               "${CMAKE_SOURCE_DIR}/scripts/flat_drawer.py"
-        DESTINATION scripts)
-
-# install the third party libs to /L2_sim/third_party_libs
-install(DIRECTORY third_party_libs/ 
-        DESTINATION lib 
-        FILES_MATCHING PATTERN "*.hpp" EXCLUDE
-)
+        DESTINATION scripts
+        PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ)

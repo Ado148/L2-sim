@@ -1,4 +1,4 @@
-// Author: Bc.  Adam Pap
+// Author:      Adam Pap
 // Description: This class is used to create the correct parser based on the file extension 
 
 #include <memory>

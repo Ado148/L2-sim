@@ -1,8 +1,9 @@
-# Author: Bc.  Adam Pap
-# Description: This program reads the input data from the stdin and processes them.
-#              It outputs the scatter plot of the plane points and saves it as plane_points.png
+# Author:       Adam Pap
+# Description:  This program reads the input data from the stdin and processes them.
+#               It outputs the scatter plot of the plane points and saves it as plane_points.png
 
 import sys
+import os
 import matplotlib.pyplot as plt
 
 def input_data(data):
@@ -22,7 +23,9 @@ def input_data_processing(data):
     
     for line in data:
         try:
+            
             file_name, group_coords = line.strip().split(' ', 1) # split the line by space and get the first element
+            file_name = os.path.basename(file_name)
             group, group_coords = group_coords.split(':') # split the second element by space
             x, y = group_coords.split(',')
             plane_points.append((file_name, group, float(x), float(y)))
@@ -67,7 +70,7 @@ if __name__ == '__main__':
     #print('End of input data\n') # debug
 
     plane_points = input_data_processing(data)
-    print(plane_points)
+    #print(plane_points)
     
     plot_plane_points(plane_points)
     print('Plot saved as plane_points.png in the root of the project.')

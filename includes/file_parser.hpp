@@ -1,4 +1,4 @@
-// Author: Bc.  Adam Pap
+// Author:      Adam Pap
 // Description: This abstract class is used to define the interface for the file parsers  
 
 #pragma once // include once - avoid duplicate def and redefs

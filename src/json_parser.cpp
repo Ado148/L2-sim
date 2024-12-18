@@ -1,4 +1,4 @@
-// Author: Bc.  Adam Pap
+// Author:      Adam Pap
 // Description: This class is used to parse the json (.json) files 
 
 #include <iostream>
