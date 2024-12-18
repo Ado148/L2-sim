@@ -5,15 +5,6 @@
 import sys
 import os
 import matplotlib.pyplot as plt
-
-def input_data(data):
-    try: 
-        for line in data:
-            print(line, end='')
-        return 0
-    except Exception as err:
-        print(f'Error: {err}', file=sys.stdout)
-        return 1
     
 def input_data_processing(data): 
     # This function processes the input data and returns an array of tuples 
@@ -64,13 +55,8 @@ def plot_plane_points(plane_points):
     
 if __name__ == '__main__':
     data = sys.stdin.readlines()
-    
-    #print('Input data:') # debug
-    #exit_code = input_data(data) # debug
-    #print('End of input data\n') # debug
 
     plane_points = input_data_processing(data)
-    #print(plane_points)
     
     plot_plane_points(plane_points)
     print('Plot saved as plane_points.png in the root of the project.')
