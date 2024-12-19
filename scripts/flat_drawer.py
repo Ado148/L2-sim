@@ -59,7 +59,7 @@ if __name__ == '__main__':
     plane_points = input_data_processing(data)
     
     plot_plane_points(plane_points)
-    print('Plot saved as plane_points.png in the root of the project.')
+    print('Plot saved as plane_points.png.')
     
     sys.exit(0) # for the bash script
     
